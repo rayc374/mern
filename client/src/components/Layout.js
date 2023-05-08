@@ -5,8 +5,6 @@ import Navbarmenu from './Navbarmenu';
 const Layout = ({ currentUser, setCurrentUser }) => {
   return (
     <>
-      <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <Navbarmenu />
       <Outlet />
     </>
   );

@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import HomeComponent from './components/home-component';
 import RegisterComponent from './components/register-component';
@@ -9,11 +9,41 @@ import AuthService from './services/auth.service';
 import CourseComponent from './components/course-component';
 import PostCourseComponent from './components/postCourse-component';
 import EnrollComponent from './components/enroll-component';
+import Apply from './components/Apply';
 import './App.css';
+import Navbarmenu from './components/Navbarmenu';
+import Directions from './pages/directions';
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUser = async () => {
+      fetch('http://localhost:8080/auth/login/success', {
+        method: 'GET',
+        credentials: 'include',
+        header: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error('authentication has been failed!');
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+  console.log(user);
   return (
     <BrowserRouter>
+      <Navbarmenu user={user} />
       <Routes>
         <Route
           path="/"
@@ -24,13 +54,12 @@ function App() {
           <Route index element={<HomeComponent />} />
           <Route path="register" element={<RegisterComponent />} />
           <Route
-            path="login"
-            element={
-              <LoginComponent
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
+            path="/login"
+            element={user ? <Navigate to="/" /> : <LoginComponent />}
+          />
+          <Route
+            path="/apply/:id"
+            element={user ? <Apply /> : <Navigate to="/login" />}
           />
           <Route
             path="profile"
@@ -69,6 +98,7 @@ function App() {
             }
           />
         </Route>
+        <Route path="directions" element={<Directions />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
   username: {
@@ -21,22 +21,25 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ["student", "instructor"],
+    enum: ['student', 'instructor'],
     required: true,
   },
   date: {
     type: Date,
     default: Date.now,
   },
+  googleID: {
+    type: String,
+  },
 });
 
 // instance methods
 userSchema.methods.isStudent = function () {
-  return this.role == "student";
+  return this.role == 'student';
 };
 
 userSchema.methods.isIsntructor = function () {
-  return this.role == "instructor";
+  return this.role == 'instructor';
 };
 
 userSchema.methods.comparePassword = async function (password, cb) {
@@ -51,13 +54,13 @@ userSchema.methods.comparePassword = async function (password, cb) {
 
 // mongoose middlewares
 // 若使用者為新用戶，或者是正在更改密碼，則將密碼進行雜湊處理
-userSchema.pre("save", async function (next) {
+userSchema.pre('save', async function (next) {
   // this 代表 mongoDB 內的 document
-  if (this.isNew || this.isModified("password")) {
+  if (this.isNew || this.isModified('password')) {
     const hashValue = await bcrypt.hash(this.password, 10);
     this.password = hashValue;
   }
   next();
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
+import AuthService from '../services/auth.service';
 import { NavLink, Link } from 'react-router-dom';
 import { FiAlignRight, FiXCircle, FiChevronDown } from 'react-icons/fi';
+import logo from '../image/logo.png';
+
 // import logo from '../../img/logo.png';
-const Navbarmenu = () => {
+//------------------------------------------------------
+
+const Navbarmenu = ({ user }) => {
+  //------------------------------------------------------------
+  const Logout = () => {
+    window.alert('已登出。');
+    window.open('http://localhost:8080/auth/logout', '_self');
+    // setCurrentUser(null);
+  };
   const [isMenu, setisMenu] = useState(false);
   const [isResponsiveclose, setResponsiveclose] = useState(false);
   const toggleClass = () => {
@@ -63,69 +74,111 @@ const Navbarmenu = () => {
               )}
               <ul className={boxClass.join(' ')}>
                 <li className="menu-item">
-                  <NavLink
+                  <Link
                     exact
                     activeClassName="is-active"
                     onClick={toggleClass}
                     to={`/`}
                   >
-                    {' '}
-                    Home{' '}
-                  </NavLink>
+                    <img src={logo} width={'50px'}></img> 首頁{' '}
+                  </Link>
                 </li>
-                <li className="menu-item ">
-                  <NavLink
-                    onClick={toggleClass}
-                    activeClassName="is-active"
-                    to={`/About`}
-                  >
+                <li className="menu-item sub__menus__arrows">
+                  <Link onClick={toggleClass} activeClassName="is-active">
                     {' '}
-                    About{' '}
-                  </NavLink>{' '}
+                    本館資訊 <FiChevronDown />{' '}
+                  </Link>{' '}
+                  <ul className={boxClassSubMenu.join(' ')}>
+                    <li>
+                      {''}
+                      <Link
+                        onClick={toggleClass}
+                        activeClassName="is-active"
+                        to={`/`}
+                      >
+                        開館資訊{' '}
+                      </Link>
+                    </li>
+                    <li>
+                      {''}
+                      <Link
+                        onClick={toggleClass}
+                        activeClassName="is-active"
+                        to={`/`}
+                      >
+                        樓層介紹{' '}
+                      </Link>
+                    </li>
+                    <li>
+                      {''}
+                      <Link
+                        onClick={toggleClass}
+                        activeClassName="is-active"
+                        to={`/directions`}
+                      >
+                        場地說明{' '}
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
                 <li
                   onClick={toggleSubmenu}
                   className="menu-item sub__menus__arrows"
                 >
                   {' '}
-                  <Link to="#">
+                  <Link>
                     {' '}
-                    Shop <FiChevronDown />{' '}
+                    線上申請 <FiChevronDown />{' '}
                   </Link>
                   <ul className={boxClassSubMenu.join(' ')}>
                     <li>
                       {' '}
-                      <NavLink
+                      <Link
                         onClick={toggleClass}
                         activeClassName="is-active"
-                        to={`/Online`}
+                        to={`/Apply`}
                       >
                         {' '}
-                        Online Shop{' '}
-                      </NavLink>{' '}
+                        網路辦證{' '}
+                      </Link>{' '}
                     </li>
+
                     <li>
-                      <NavLink
+                      <Link
                         onClick={toggleClass}
                         activeClassName="is-active"
                         to={`/Offline`}
                       >
                         {' '}
-                        Offline Shop{' '}
-                      </NavLink>{' '}
+                        活動報名{' '}
+                      </Link>{' '}
+                    </li>
+                    <li>
+                      <Link
+                        onClick={toggleClass}
+                        activeClassName="is-active"
+                        to={`/apply`}
+                      >
+                        {''}
+                        場地租借{''}
+                      </Link>
+                      {''}
                     </li>
                   </ul>
                 </li>
-                <li className="menu-item ">
-                  <NavLink
-                    onClick={toggleClass}
-                    activeClassName="is-active"
-                    to={`/login`}
-                  >
-                    {' '}
-                    Login{' '}
-                  </NavLink>{' '}
-                </li>
+                {user ? (
+                  <li className="menu-item">
+                    <Link onClick={Logout} to={'/'}>
+                      登出
+                    </Link>
+                  </li>
+                ) : (
+                  <li className="menu-item">
+                    <Link activeClassName="is-active" to="/login">
+                      登入
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>

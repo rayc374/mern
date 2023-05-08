@@ -243,3 +243,36 @@ li {
     text-align: left;
   }
 }
+.login {
+  height: cacl(100vh -50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  width: 60%;
+  height: 75%;
+  -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+}
+.loginButton {
+  width: 150px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.google {
+  background-color: #df4930;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
