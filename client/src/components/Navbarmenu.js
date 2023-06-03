@@ -3,7 +3,7 @@ import AuthService from '../services/auth.service';
 import { NavLink, Link } from 'react-router-dom';
 import { FiAlignRight, FiXCircle, FiChevronDown } from 'react-icons/fi';
 import logo from '../image/logo.png';
-import '../App.css';
+import './Navbarmenu.css';
 // import logo from '../../img/logo.png';
 //------------------------------------------------------
 

@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import HomeComponent from './components/home-component';
 import RegisterComponent from './components/register-component';
-import LoginComponent from './components/login-component';
+import LoginComponent from './components/Login-component';
 import ProfileComponent from './components/profile-component';
 import AuthService from './services/auth.service';
 import CourseComponent from './components/course-component';
 import PostCourseComponent from './components/postCourse-component';
 import EnrollComponent from './components/enroll-component';
 import Apply from './components/Apply';
-import './App.css';
+//import './App.css';
 import Navbarmenu from './components/Navbarmenu';
 import Directions from './pages/directions';
 function App() {
