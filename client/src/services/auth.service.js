@@ -1,7 +1,12 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8080/api/user';
-
+//const API_URL = 'http://localhost:8080/api/user';
+const API_URL = 'http://localhost:3000/api';
+const API_URL2 = 'http://localhost:8080/api';
 class AuthService {
+  submit(formData) {
+    return axios.post(`${API_URL2}/form/submit-form`, formData);
+  }
+
   login(email, password) {
     return axios.post(API_URL + '/login', { email, password });
   }

@@ -9,7 +9,7 @@ import AuthService from './services/auth.service';
 import CourseComponent from './components/course-component';
 import PostCourseComponent from './components/postCourse-component';
 import EnrollComponent from './components/enroll-component';
-import Apply from './components/Apply';
+import Form_app from './components/Form_app';
 //import './App.css';
 import Navbarmenu from './components/Navbarmenu';
 import Directions from './pages/directions';
@@ -21,7 +21,7 @@ function App() {
       fetch('http://localhost:8080/auth/login/success', {
         method: 'GET',
         credentials: 'include',
-        header: {
+        headers: {
           Accept: 'application/json',
           'Content-type': 'application/json',
           'Access-Control-Allow-Credentials': true,
@@ -58,8 +58,8 @@ function App() {
             element={user ? <Navigate to="/" /> : <LoginComponent />}
           />
           <Route
-            path="/apply"
-            element={user ? <Apply /> : <Navigate to="/login" />}
+            path="/form"
+            element={user ? <Form_app /> : <Navigate to="/login" />}
           />
           <Route
             path="profile"

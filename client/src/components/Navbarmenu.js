@@ -74,14 +74,14 @@ const Navbarmenu = ({ user }) => {
               )}
               <ul className={boxClass.join(' ')}>
                 <li className="menu-item">
-                  <Link
+                  <NavLink
                     exact
                     activeClassName="is-active"
                     onClick={toggleClass}
                     to={`/`}
                   >
                     <img src={logo} width={'50px'}></img> 首頁{' '}
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="menu-item sub__menus__arrows">
                   <Link onClick={toggleClass} activeClassName="is-active">
@@ -136,7 +136,7 @@ const Navbarmenu = ({ user }) => {
                       <Link
                         onClick={toggleClass}
                         activeClassName="is-active"
-                        to={`/Apply`}
+                        to={`/form`}
                       >
                         {' '}
                         網路辦證{' '}
@@ -157,7 +157,7 @@ const Navbarmenu = ({ user }) => {
                       <Link
                         onClick={toggleClass}
                         activeClassName="is-active"
-                        to={`/apply`}
+                        to={`/form`}
                       >
                         {''}
                         場地租借{''}

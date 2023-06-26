@@ -3,7 +3,7 @@
   max-height: 120px;
 }
 .is-active {
-  color: #ff5800 !important;
+  color: #fafafa !important;
 }
 
 .navBar .col-md-3 {
@@ -66,20 +66,20 @@ li {
   position: relative;
 }
 .header__middle__logo > a > h1 {
-  color: #07a8ff;
+  color: #273035;
   text-transform: uppercase;
   text-decoration: none;
   margin-top: 33px;
 }
-/* .active{
-    color: #ff1800!important;
-  } */
+.active {
+  color: #000000 !important;
+}
 .header__middle__menus span.text {
   position: absolute;
   right: 177px;
   bottom: 10px;
   font-size: 14px;
-  color: #ff1800;
+  color: #f0f0f0;
 }
 .sub__menus__arrows {
   position: relative;
@@ -104,7 +104,7 @@ li {
 
 @media (max-width: 767px) {
   .header__middle .active {
-    color: #ff3d00 !important;
+    color: #000000 !important;
   }
 }
 
@@ -145,7 +145,7 @@ li {
     margin: 27px 0 0 0;
   }
   .main-nav .menubar__button:hover {
-    background-color: #f44336;
+    background-color: #51abff;
   }
   .main-nav .menu-item:hover > a {
     color: #07a8ff !important;
@@ -170,16 +170,16 @@ li {
     position: absolute;
     left: 0;
     z-index: 10007;
-    background-color: #d8f1ff;
-    border-bottom: 3px solid #ff3d00;
+    background-color: #c9e7f8;
+    border-bottom: 3px solid #ffffff;
     right: 0;
-    padding-bottom: 17px;
+    padding-bottom: 10px;
     padding-top: 57px;
   }
   .main-nav .menu-item a {
     margin: 10px 17px;
     text-align: center;
-    color: #000000;
+    color: #051c9e;
   }
   .main-nav ul.main-menu {
     display: none;
